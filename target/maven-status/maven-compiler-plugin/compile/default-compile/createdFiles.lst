@@ -1,0 +1,5 @@
+com\tradefinance\lambda_pdf_email\EmailService.class
+com\tradefinance\lambda_pdf_email\PdfEmailRequest.class
+com\tradefinance\lambda_pdf_email\App.class
+com\tradefinance\lambda_pdf_email\PdfLambdaHandler.class
+com\tradefinance\lambda_pdf_email\PdfService.class

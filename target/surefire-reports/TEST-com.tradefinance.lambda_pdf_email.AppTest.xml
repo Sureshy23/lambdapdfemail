@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.tradefinance.lambda_pdf_email.AppTest" time="0.115" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="E:\Suresh\eclipse_projects\lambda-pdf-email\target\test-classes;E:\Suresh\eclipse_projects\lambda-pdf-email\target\classes;C:\Users\f9suresh\.m2\repository\com\sun\mail\jakarta.mail\1.6.7\jakarta.mail-1.6.7.jar;C:\Users\f9suresh\.m2\repository\com\sun\activation\jakarta.activation\1.2.1\jakarta.activation-1.2.1.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-lambda-java-core\1.2.3\aws-lambda-java-core-1.2.3.jar;C:\Users\f9suresh\.m2\repository\org\apache\pdfbox\pdfbox\2.0.29\pdfbox-2.0.29.jar;C:\Users\f9suresh\.m2\repository\org\apache\pdfbox\fontbox\2.0.29\fontbox-2.0.29.jar;C:\Users\f9suresh\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-java-sdk-ses\1.12.120\aws-java-sdk-ses-1.12.120.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-java-sdk-core\1.12.120\aws-java-sdk-core-1.12.120.jar;C:\Users\f9suresh\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\f9suresh\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\f9suresh\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\f9suresh\.m2\repository\software\amazon\ion\ion-java\1.0.2\ion-java-1.0.2.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.3\jackson-databind-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.3\jackson-annotations-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.3\jackson-core-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-cbor\2.12.3\jackson-dataformat-cbor-2.12.3.jar;C:\Users\f9suresh\.m2\repository\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\jmespath-java\1.12.120\jmespath-java-1.12.120.jar;C:\Users\f9suresh\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\f9suresh\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\f9suresh\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\f9suresh\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\f9suresh\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Asia/Riyadh"/>
+    <property name="os.name" value="Windows Server 2016"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="E:\Suresh\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\f9suresh\AppData\Local\Temp\4\surefire16996658494151965103\surefirebooter-20250811130724873_3.jar C:\Users\f9suresh\AppData\Local\Temp\4\surefire16996658494151965103 2025-08-11T13-07-24_038-jvmRun1 surefire-20250811130724873_1tmp surefire_0-20250811130724873_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="E:\Suresh\eclipse_projects\lambda-pdf-email\target\test-classes;E:\Suresh\eclipse_projects\lambda-pdf-email\target\classes;C:\Users\f9suresh\.m2\repository\com\sun\mail\jakarta.mail\1.6.7\jakarta.mail-1.6.7.jar;C:\Users\f9suresh\.m2\repository\com\sun\activation\jakarta.activation\1.2.1\jakarta.activation-1.2.1.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-lambda-java-core\1.2.3\aws-lambda-java-core-1.2.3.jar;C:\Users\f9suresh\.m2\repository\org\apache\pdfbox\pdfbox\2.0.29\pdfbox-2.0.29.jar;C:\Users\f9suresh\.m2\repository\org\apache\pdfbox\fontbox\2.0.29\fontbox-2.0.29.jar;C:\Users\f9suresh\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-java-sdk-ses\1.12.120\aws-java-sdk-ses-1.12.120.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\aws-java-sdk-core\1.12.120\aws-java-sdk-core-1.12.120.jar;C:\Users\f9suresh\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\f9suresh\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\f9suresh\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\f9suresh\.m2\repository\software\amazon\ion\ion-java\1.0.2\ion-java-1.0.2.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.3\jackson-databind-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.3\jackson-annotations-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.3\jackson-core-2.12.3.jar;C:\Users\f9suresh\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-cbor\2.12.3\jackson-dataformat-cbor-2.12.3.jar;C:\Users\f9suresh\.m2\repository\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;C:\Users\f9suresh\.m2\repository\com\amazonaws\jmespath-java\1.12.120\jmespath-java-1.12.120.jar;C:\Users\f9suresh\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\f9suresh\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\f9suresh\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\f9suresh\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\f9suresh\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\f9suresh"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2022-04-19"/>
+    <property name="java.home" value="E:\Suresh\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="E:\Suresh\eclipse_projects\lambda-pdf-email"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\f9suresh\AppData\Local\Temp\4\surefire16996658494151965103\surefirebooter-20250811130724873_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.3+7"/>
+    <property name="user.name" value="f9suresh"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.3+7"/>
+    <property name="localRepository" value="C:\Users\f9suresh\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\f9suresh\AppData\Local\Temp\4\"/>
+    <property name="java.version" value="17.0.3"/>
+    <property name="user.dir" value="E:\Suresh\eclipse_projects\lambda-pdf-email"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="E:\Suresh\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/Suresh/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416/jre/bin/server;E:/Suresh/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416/jre/bin;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\app\f9kolupudi\product\18.0.0\dbhomeXE\bin;C:\Users\f9kolupudi\Downloads\WINDOWS.X64_193000_db_home\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;E:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;E:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Java\jdk1.8.0_202\bin;C:\Users\f9kolupudi\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\PuTTY\;C:\Program Files\dotnet\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\GitHub CLI\;F:\Program Files\python;C:\Program Files\nodejs\;F:\Program Files\python\Lib\site-packages\pip;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;E:\venky\TSS\apache-maven-3.8.9-bin\apache-maven-3.8.9\bin;C:\Users\f9suresh\AppData\Local\Microsoft\WindowsApps;C:\Users\f9suresh\AppData\Local\Programs\Microsoft VS Code\bin;E:\Suresh\eclipse;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.3+7"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="shouldAnswerWithTrue" classname="com.tradefinance.lambda_pdf_email.AppTest" time="0.043"/>
+</testsuite>
