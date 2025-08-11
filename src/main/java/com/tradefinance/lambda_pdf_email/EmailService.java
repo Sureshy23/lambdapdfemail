@@ -49,7 +49,7 @@ public class EmailService {
 		
 		
 		   AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard()
-	                .withRegion(Regions.US_EAST_1) // Update to your region
+	                .withRegion(Regions.ME_SOUTH_1) // Update to your region
 	                .build();
 
 	        SendRawEmailRequest rawEmailRequest = new SendRawEmailRequest(rawMessage);

@@ -18,7 +18,7 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
             );
 
             emailService.sendEmailWithAttachment(
-                    "no-reply@alsalambank.com",
+                    "no-reply-dev@alsalambank.com",
                     request.getEmail(),
                     "Your Password Protected PDF",
                     "Please find attached.",
