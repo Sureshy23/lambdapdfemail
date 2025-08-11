@@ -3,6 +3,7 @@ package com.tradefinance.lambda_pdf_email;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +27,15 @@ public class PdfService {
 			PDRectangle pdRectangle = page.getMediaBox();
 			float margin = 50;
 			
-			File imageFile = new File ("src/main/resources/logo.png");
-			PDImageXObject imageXObject = PDImageXObject.createFromFileByContent(imageFile, document);
+//			File imageFile = new File ("src/main/resources/logo.png");
+//			PDImageXObject imageXObject = PDImageXObject.createFromFileByContent(imageFile, document);
+			
+			InputStream imageStream = getClass().getResourceAsStream("/logo.png");
+			if (imageStream == null) {
+			    throw new RuntimeException("Image not found in classpath!");
+			}
+			PDImageXObject imageXObject = PDImageXObject.createFromByteArray(document, imageStream.readAllBytes(), "logo");
+
 			
 			float imageWidth = 100;
 			float imageHeight = 50;
