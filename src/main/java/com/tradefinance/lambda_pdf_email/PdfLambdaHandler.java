@@ -17,7 +17,7 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     "owner123"
             );
 
-            emailService.sendEmailWithAttachment(
+            String messageId = emailService.sendEmailWithAttachment(
                     "no-reply-dev@alsalambank.com",
                     request.getEmail(),
                     "Your Password Protected PDF",
@@ -26,7 +26,8 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     request.getTfNo()
             );
 
-            return "Email sent successfully!";
+            return "Email sent successfully!"+messageId;
+            
         } catch (Exception e) {
             e.printStackTrace();
             return "Error: " + e.getMessage();

@@ -21,7 +21,7 @@ import java.util.Properties;
 
 public class EmailService {
 	
-	public void sendEmailWithAttachment(String from, String to, String subject, String bodyText, byte[] attachmentData, String attachmentName) throws Exception {
+	public String sendEmailWithAttachment(String from, String to, String subject, String bodyText, byte[] attachmentData, String attachmentName) throws Exception {
 		Session session = Session.getDefaultInstance(new Properties());
 		
 		MimeMessage message = new MimeMessage(session);
@@ -54,7 +54,7 @@ public class EmailService {
 
 	        SendRawEmailRequest rawEmailRequest = new SendRawEmailRequest(rawMessage);
 	        client.sendRawEmail(rawEmailRequest);
-		
+	        return message.getMessageID();
 	}
 
 }
