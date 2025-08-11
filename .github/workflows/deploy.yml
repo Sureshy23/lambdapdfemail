@@ -33,7 +33,7 @@ jobs:
           aws lambda update-function-code \
             --function-name tradeFinanceMT700 \
             --region me-south-1 \
-            --zip-file fileb://target/lambda-pdf-email-1.0-SNAPSHOT.jar
+            --zip-file fileb://target/lambda-pdf-email-0.0.1-SNAPSHOT-shaded.jar
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
