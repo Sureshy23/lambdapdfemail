@@ -1,5 +1,11 @@
 package com.tradefinance.lambda_pdf_email;
 
+import java.io.IOException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
@@ -16,7 +22,8 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     "user123",
                     "owner123"
             );
-
+            
+            System.out.println(request.getEmail());
             String messageId = emailService.sendEmailWithAttachment(
                     "no-reply-dev@alsalambank.com",
                     request.getEmail(),
