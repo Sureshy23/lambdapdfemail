@@ -26,7 +26,7 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     request.getTfNo()
             );
 
-            return "Email sent successfully!"+messageId;
+            return "Email sent successfully!"+messageId.toString();
             
         } catch (Exception e) {
             e.printStackTrace();
