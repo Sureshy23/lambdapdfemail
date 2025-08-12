@@ -26,7 +26,7 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
 
             System.out.println(request.getEmail());
             String messageId = emailService.sendEmailWithAttachment(
-                    "no-reply-dev@alsalambank.com",
+                    request.getFromEmail(),
                     request.getEmail(),
                     "MT700 Statement",
                     "Please find attached the MT700",

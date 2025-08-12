@@ -13,8 +13,17 @@ public class PdfEmailRequest {
     private String customerName;
     private String sender;
     private String receiver;
+    private String fromEmail;
+    
+    
 
-    private List<String> msgColumn1;
+    public String getFromEmail() {
+		return fromEmail;
+	}
+	public void setFromEmail(String fromEmail) {
+		this.fromEmail = fromEmail;
+	}
+	private List<String> msgColumn1;
     private List<String> msgColumn2;
 	public String getDate() {
 		return date;
