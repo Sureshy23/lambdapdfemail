@@ -112,12 +112,12 @@ public class PdfService {
 	        cs.close();
 
 	        // Protect PDF with password
-	        AccessPermission accessPermission = new AccessPermission();
-	        accessPermission.setCanPrint(true);
-
-	        StandardProtectionPolicy policy = new StandardProtectionPolicy(ownerPassword, userPassword, accessPermission);
-	        policy.setEncryptionKeyLength(128);
-	        document.protect(policy);
+//	        AccessPermission accessPermission = new AccessPermission();
+//	        accessPermission.setCanPrint(true);
+//
+//	        StandardProtectionPolicy policy = new StandardProtectionPolicy(ownerPassword, userPassword, accessPermission);
+//	        policy.setEncryptionKeyLength(128);
+//	        document.protect(policy);
 
 	        try (ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream()) {
 	            document.save(arrayOutputStream);
