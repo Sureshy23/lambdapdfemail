@@ -31,7 +31,7 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     "MT700 Statement",
                     "Please find attached the MT700",
                     pdfBytes,
-                    request.getTfNo()
+                    request.getTfNo().concat(".pdf")
             );
 
             return "Email sent successfully!"+messageId.toString();
