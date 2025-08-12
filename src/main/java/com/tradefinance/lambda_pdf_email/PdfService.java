@@ -26,7 +26,8 @@ public class PdfService {
 			
 			PDRectangle pdRectangle = page.getMediaBox();
 			float margin = 50;
-			
+			float bottomMargin = 50;
+
 			InputStream imageStream = getClass().getResourceAsStream("/logo.png");
 			if (imageStream == null) {
 			    throw new RuntimeException("Image not found in classpath!");
@@ -70,7 +71,7 @@ public class PdfService {
                     float col2Width = 350;
                     float maxWidth1 = col1Width - 10; // padding inside cell
                     float maxWidth2 = col2Width - 10;
-
+                    float yStart = pdRectangle.getHeight() - 150;
                     float leading = 14f; // line spacing
                     
                  // Draw header row
@@ -91,9 +92,11 @@ public class PdfService {
                     float textStartX2 = margin + col1Width + 5;
                     float textStartY = currentY - 14; // baseline offset
 
-                    drawMultilineText(contentStream, col1Text, textStartX1, textStartY, maxWidth1, leading);
-                    drawMultilineText(contentStream, col2Text, textStartX2, textStartY, maxWidth2, leading);
-                    
+//                    drawMultilineText(contentStream, col1Text, textStartX1, textStartY, maxWidth1, leading);
+//                    drawMultilineText(contentStream, col2Text, textStartX2, textStartY, maxWidth2, leading);
+                    drawMultilineTextWithPagination(document, contentStream, col1Text, textStartX1, yStart, col1Width - 10, leading, margin, bottomMargin);
+                    drawMultilineTextWithPagination(document, contentStream, col2Text, textStartX2, yStart, col2Width - 10, leading, margin, bottomMargin);
+
 //                    int maxRows = Math.max(col1.size(), col2.size());
 //                    
 //                    drawTableRow(contentStream, margin, currentY, colWidths, rowHeight, "Message 1", "Message 2");
@@ -120,6 +123,50 @@ public class PdfService {
 			}
 		}
 	}
+	
+	
+	private void drawMultilineTextWithPagination(PDDocument document,
+            PDPageContentStream cs,
+            String text,
+            float x,
+            float yStart,
+            float maxWidth,
+            float leading,
+            float margin,
+            float bottomMargin) throws IOException {
+String[] lines = text.split("\n");
+PDRectangle pageSize = PDRectangle.A4;
+float yPosition = yStart;
+
+cs.setLeading(leading);
+cs.beginText();
+cs.newLineAtOffset(x, yPosition);
+
+for (String line : lines) {
+// Check if there is space for next line, else create new page
+if (yPosition <= bottomMargin) {
+cs.endText();
+cs.close();
+
+// Add new page and open new content stream
+PDPage newPage = new PDPage(pageSize);
+document.addPage(newPage);
+cs = new PDPageContentStream(document, newPage);
+
+// Reset yPosition and begin text again
+yPosition = pageSize.getHeight() - margin;
+cs.setLeading(leading);
+cs.beginText();
+cs.newLineAtOffset(x, yPosition);
+}
+
+cs.showText(line);
+cs.newLine();
+yPosition -= leading;
+}
+cs.endText();
+}
+
 
 	private float drawMultilineText(PDPageContentStream cs, String text, float x, float y, float maxWidth, float leading) throws IOException {
 	    String[] lines = text.split("\n");
