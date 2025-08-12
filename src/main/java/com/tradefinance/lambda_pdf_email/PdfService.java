@@ -27,9 +27,6 @@ public class PdfService {
 			PDRectangle pdRectangle = page.getMediaBox();
 			float margin = 50;
 			
-//			File imageFile = new File ("src/main/resources/logo.png");
-//			PDImageXObject imageXObject = PDImageXObject.createFromFileByContent(imageFile, document);
-			
 			InputStream imageStream = getClass().getResourceAsStream("/logo.png");
 			if (imageStream == null) {
 			    throw new RuntimeException("Image not found in classpath!");
@@ -49,31 +46,66 @@ public class PdfService {
                 contentStream.drawImage(imageXObject, x, y, imageWidth, imageHeight);
 
 				contentStream.beginText();
-				contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+				contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
 				contentStream.newLineAtOffset(50, 700);
 				contentStream.showText("ttt");
 				contentStream.endText();
 				
-				float currentY = pdRectangle.getHeight() - 100;
+//				float currentY = pdRectangle.getHeight() - 100;
                 float[] colWidths = {150, 350};
-                float rowHeight = 20;
+//                float rowHeight = 20;
 
 //                    drawTableRow(contentStream, margin, currentY, colWidths, rowHeight);
 //                    currentY -= rowHeight;
                     
                     List<String> col1 = request.getMsgColumn1();
                     List<String> col2 = request.getMsgColumn2();
-                    int maxRows = Math.max(col1.size(), col2.size());
                     
-                    drawTableRow(contentStream, margin, currentY, colWidths, rowHeight, "Message 1", "Message 2");
-                    currentY -= rowHeight;
+                    String col1Text = String.join("\n", col1);
+                    String col2Text = String.join("\n", col2);
+
+                    float currentY = pdRectangle.getHeight() - 100;
+                    float rowHeight; 
+                    float col1Width = 150;
+                    float col2Width = 350;
+                    float maxWidth1 = col1Width - 10; // padding inside cell
+                    float maxWidth2 = col2Width - 10;
+
+                    float leading = 14f; // line spacing
                     
-                    for (int i = 0; i < maxRows; i++) {
-                        String val1 = i < col1.size() ? col1.get(i) : "";
-                        String val2 = i < col2.size() ? col2.get(i) : "";
-                        drawTableRow(contentStream, margin, currentY, colWidths, rowHeight, val1, val2);
-                        currentY -= rowHeight;
-                    }
+                 // Draw header row
+                    drawTableRow(contentStream, margin, currentY, new float[] {col1Width, col2Width}, leading + 6, "Message 1", "Message 2");
+                    currentY -= (leading + 6);
+
+                    // Draw content row border box height depends on number of lines
+                    // First calculate height for col1 and col2 multiline text
+                    int col1Lines = col1.size();
+                    int col2Lines = col2.size();
+                    int maxLines = Math.max(col1Lines, col2Lines);
+                    rowHeight = leading * maxLines + 6;
+
+                    drawTableRow(contentStream, margin, currentY, new float[] {col1Width, col2Width}, rowHeight, null, null);
+
+                    // Draw multiline texts inside cells
+                    float textStartX1 = margin + 5;
+                    float textStartX2 = margin + col1Width + 5;
+                    float textStartY = currentY - 14; // baseline offset
+
+                    drawMultilineText(contentStream, col1Text, textStartX1, textStartY, maxWidth1, leading);
+                    drawMultilineText(contentStream, col2Text, textStartX2, textStartY, maxWidth2, leading);
+                    
+//                    int maxRows = Math.max(col1.size(), col2.size());
+//                    
+//                    drawTableRow(contentStream, margin, currentY, colWidths, rowHeight, "Message 1", "Message 2");
+//                    currentY -= rowHeight;
+//                    
+//                    for (int i = 0; i < maxRows; i++) {
+//                        String val1 = i < col1.size() ? col1.get(i) : "";
+//                        String val2 = i < col2.size() ? col2.get(i) : "";
+//                        drawTableRow(contentStream, margin, currentY, colWidths, rowHeight, val1, val2);
+//                        currentY -= rowHeight;
+//                    }         
+                    
 			}
 			AccessPermission accessPermission = new AccessPermission();
 			accessPermission.setCanPrint(true);
@@ -89,35 +121,84 @@ public class PdfService {
 		}
 	}
 
-	private void drawTableRow(PDPageContentStream cs, float x, float y, float[] colWidths, float rowHeight,
-            String col1, String col2) throws IOException {
-float cellHeight = rowHeight;
-float[] xPositions = {x, x + colWidths[0], x + colWidths[0] + colWidths[1]};
-
-cs.setLineWidth(0.5f);
-
-// Borders
-cs.moveTo(x, y);
-cs.lineTo(xPositions[2], y);
-cs.lineTo(xPositions[2], y - cellHeight);
-cs.lineTo(x, y - cellHeight);
-cs.lineTo(x, y);
-cs.stroke();
-
-// Vertical line between columns
-cs.moveTo(xPositions[1], y);
-cs.lineTo(xPositions[1], y - cellHeight);
-cs.stroke();
-
-// Text
-cs.beginText();
-cs.newLineAtOffset(x + 5, y - 15);
-cs.showText(col1 != null ? col1 : "");
-cs.endText();
-
-cs.beginText();
-cs.newLineAtOffset(xPositions[1] + 5, y - 15);
-cs.showText(col2 != null ? col2 : "");
-cs.endText();	
+	private float drawMultilineText(PDPageContentStream cs, String text, float x, float y, float maxWidth, float leading) throws IOException {
+	    String[] lines = text.split("\n");
+	    cs.setLeading(leading);
+	    cs.beginText();
+	    cs.newLineAtOffset(x, y);
+	    for (String line : lines) {
+	        cs.showText(line);
+	        cs.newLine();
+	    }
+	    cs.endText();
+	    return lines.length * leading; // total height used
 	}
+	
+	private void drawTableRow(PDPageContentStream cs, float x, float y, float[] colWidths, float rowHeight,
+	        String col1, String col2) throws IOException {
+	    float cellHeight = rowHeight;
+	    float[] xPositions = {x, x + colWidths[0], x + colWidths[0] + colWidths[1]};
+
+	    cs.setLineWidth(0.5f);
+
+	    // Borders
+	    cs.moveTo(x, y);
+	    cs.lineTo(xPositions[2], y);
+	    cs.lineTo(xPositions[2], y - cellHeight);
+	    cs.lineTo(x, y - cellHeight);
+	    cs.lineTo(x, y);
+	    cs.stroke();
+
+	    // Vertical line between columns
+	    cs.moveTo(xPositions[1], y);
+	    cs.lineTo(xPositions[1], y - cellHeight);
+	    cs.stroke();
+
+	    if (col1 != null) {
+	        cs.beginText();
+	        cs.newLineAtOffset(x + 5, y - 15);
+	        cs.showText(col1);
+	        cs.endText();
+	    }
+
+	    if (col2 != null) {
+	        cs.beginText();
+	        cs.newLineAtOffset(xPositions[1] + 5, y - 15);
+	        cs.showText(col2);
+	        cs.endText();
+	    }
+	}
+
+	
+//	private void drawTableRow(PDPageContentStream cs, float x, float y, float[] colWidths, float rowHeight,
+//			String col1, String col2) throws IOException {
+//		float cellHeight = rowHeight;
+//		float[] xPositions = {x, x + colWidths[0], x + colWidths[0] + colWidths[1]};
+//		
+//		cs.setLineWidth(0.5f);
+//		
+//		// Borders
+//		cs.moveTo(x, y);
+//		cs.lineTo(xPositions[2], y);
+//		cs.lineTo(xPositions[2], y - cellHeight);
+//		cs.lineTo(x, y - cellHeight);
+//		cs.lineTo(x, y);
+//		cs.stroke();
+//		
+//		// Vertical line between columns
+//		cs.moveTo(xPositions[1], y);
+//		cs.lineTo(xPositions[1], y - cellHeight);
+//		cs.stroke();
+//		
+//		// Text
+//		cs.beginText();
+//		cs.newLineAtOffset(x + 5, y - 15);
+//		cs.showText(col1 != null ? col1 : "");
+//		cs.endText();
+//		
+//		cs.beginText();
+//		cs.newLineAtOffset(xPositions[1] + 5, y - 15);
+//		cs.showText(col2 != null ? col2 : "");
+//		cs.endText();	
+//	}
 }
