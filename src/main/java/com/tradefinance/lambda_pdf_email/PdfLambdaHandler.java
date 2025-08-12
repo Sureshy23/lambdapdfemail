@@ -22,7 +22,8 @@ public class PdfLambdaHandler implements RequestHandler<PdfEmailRequest, String>
                     "user123",
                     "owner123"
             );
-            
+            System.out.println(pdfBytes);
+
             System.out.println(request.getEmail());
             String messageId = emailService.sendEmailWithAttachment(
                     "no-reply-dev@alsalambank.com",

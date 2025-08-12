@@ -53,8 +53,12 @@ public class EmailService {
 	                .build();
 
 	        SendRawEmailRequest rawEmailRequest = new SendRawEmailRequest(rawMessage);
-	        client.sendRawEmail(rawEmailRequest);
-	        return message.getMessageID();
+	        SendRawEmailResult emailResult = client.sendRawEmail(rawEmailRequest);
+	        String messageId = emailResult.getMessageId();
+	        System.out.println(messageId);
+	        
+	        
+	        return messageId;
 	}
 
 }
